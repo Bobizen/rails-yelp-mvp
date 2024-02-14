@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>See the list of all the restaurants</h1>
+  <% @restaurants.each do |restaurant| %>
+  <div class="card m-2">
+    <div class="card-body">
+      <h5 class="card-title"><%= restaurant.name %></h5>
+      <h6 class="card-subtitle"><%= restaurant.category %></h6>
+      <p class="card-text"><%= restaurant.address %></p>
+      <div class="d-inline-flex">
+        <% restaurant.reviews.each do |review| %>
+          <div class="card mb-3 mr-2 p-2">
+            <%= review.content %>
+          </div>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to "Add a review", new_restaurant_review_path(restaurant) , :class=>"btn btn-primary" %>
+      </div>
+  </div>
+  </div>
+  <% end %>
+</div>
